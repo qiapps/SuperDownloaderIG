@@ -92,9 +92,25 @@ public class BillingManager {
 
     private void handlePurchase(Purchase purchase) {
         if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-            listener.onPurchaseCompleted(purchase);
+            // Verifica se a compra já foi reconhecida
+            if (!purchase.isAcknowledged()) {
+                AcknowledgePurchaseParams acknowledgeParams = AcknowledgePurchaseParams.newBuilder()
+                        .setPurchaseToken(purchase.getPurchaseToken())
+                        .build();
+
+                billingClient.acknowledgePurchase(acknowledgeParams, billingResult -> {
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        listener.onPurchaseCompleted(purchase);
+                    } else {
+                        listener.onPurchaseError("Erro ao reconhecer a compra: " + billingResult.getDebugMessage());
+                    }
+                });
+            } else {
+                listener.onPurchaseCompleted(purchase);
+            }
         }
     }
+
 
     public void endConnection() {
         billingClient.endConnection();

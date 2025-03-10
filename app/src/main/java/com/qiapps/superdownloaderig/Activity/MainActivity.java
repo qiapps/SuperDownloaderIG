@@ -821,8 +821,11 @@ public class MainActivity extends AppCompatActivity implements BillingManager.Bi
     @Override
     public void onPurchaseCompleted(Purchase purchase) {
         Log.d("Purchase","onPurchaseCompleted");
+
         UserPreferences.initUserPremium(this);
-        Toast.makeText(customApplication, getString(R.string.compra_realizada), Toast.LENGTH_LONG).show();
+        runOnUiThread(() -> Toast.makeText(customApplication, getString(R.string.compra_realizada), Toast.LENGTH_LONG).show());
+
+
     }
 
     @Override
