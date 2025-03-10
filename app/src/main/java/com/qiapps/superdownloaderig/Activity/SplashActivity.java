@@ -63,33 +63,33 @@ public class SplashActivity extends AppCompatActivity {
         });
 
         final Timer timer = new Timer();
-        if(!UserPreferences.isShowModalPolicy(this) && UserPreferences.getContScreen(this) == 1){
-            UserPreferences.disableModalPolicy(SplashActivity.this);
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ModalPolicy.show(SplashActivity.this, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    requestPermission();
-                                }
-                            });
-                        }
-                    });
-                }
-            },1500);
-
-            }else{
+//        if(!UserPreferences.isShowModalPolicy(this) && UserPreferences.getContScreen(this) == 1){
+//            UserPreferences.disableModalPolicy(SplashActivity.this);
+//            timer.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            ModalPolicy.show(SplashActivity.this, new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View v) {
+//                                    requestPermission();
+//                                }
+//                            });
+//                        }
+//                    });
+//                }
+//            },1500);
+//
+//            }else{
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     requestPermission();
                 }
             },1500);
-        }
+        //}
     }
 
     private void requestPermission() {
