@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>count_video_download_ads</key>
+        <value>3</value>
+    </entry>
+    <entry>
+        <key>count_entrada_ads</key>
+        <value>3</value>
+    </entry>
+</defaultsMap>
+    <!-- END xml_defaults -->

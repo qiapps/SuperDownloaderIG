@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "342148996074",
+    "firebase_url": "https://instadownloader-5c9b1.firebaseio.com",
+    "project_id": "instadownloader-5c9b1",
+    "storage_bucket": "instadownloader-5c9b1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342148996074:android:044f3e70667fcade43b093",
+        "android_client_info": {
+          "package_name": "br.com.qiapps.baixarvideos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4vyOoyWLAHosCynax1ndt4Si_2H9P8og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-8746749426672361~3969794395"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342148996074:android:fdc19c604d729a2043b093",
+        "android_client_info": {
+          "package_name": "com.qiapps.superdownloaderig"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4vyOoyWLAHosCynax1ndt4Si_2H9P8og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

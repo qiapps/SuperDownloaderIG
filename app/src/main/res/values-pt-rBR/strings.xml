@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">InstaDownloader</string>
+
+    <string name="my_ca_app_pub">ca-app-pub-8746749426672361~5740870708</string>
+    <string name="intersticial_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="native_ads_test">/6499/example/native</string>
+
+    <string name="interstitial_download_video">ca-app-pub-8746749426672361/3931296710</string>
+
+    <string name="nativo_inicio">ca-app-pub-8746749426672361/5209585339</string>
+    <string name="nativo_download">ca-app-pub-8746749426672361/1884552026</string>
+    <string name="nativo_saida">ca-app-pub-8746749426672361/3068838855</string>
+
+    <string name="app_open_instadownloader">ca-app-pub-8746749426672361/3098427316</string>
+
+    <string name="placeholder_text">Cole o link do vídeo aqui</string>
+    <string name="como_usar">Como Usar</string>
+    <string name="colar">COLAR</string>
+    <string name="download">DOWNLOAD</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="premium">Remover Propagandas</string>
+    <string name="mais_apps">Mais Apps</string>
+    <string name="email_ao_desenvolvedor">Email ao Desenvolvedor</string>
+
+    <string name="nunca">Nunca</string>
+    <string name="depois">Depois</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="avalie_nosso_aplicativo">Avalie nosso aplicativo!!</string>
+    <string name="entendi">Entendi</string>
+    <string name="stories_text">Caro usuário,\n\nPor conta das políticas do instagram, não é possível baixar conteúdos do stories e de videos ao menos que esteja logado na sua conta. O login é feito na página oficial do instagram e nós não capturamos nenhuma das informações digitadas. \n\nObs: Caso decida não realizar o login, esse aplicativo não irá ser capaz de baixar os vídeos</string>
+    <string name="salvar_status_do_whatsapp">Salvar Status do WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="historico">Histórico</string>
+    <string name="opcoes">Opções</string>
+    <string name="nao_ha_itens">Não há itens aqui.</string>
+    <string name="toque_para_sair">TOQUE PARA SAIR</string>
+    <string name="ver_no_instagram">Ver no Instagram</string>
+    <string name="repostar">Repostar</string>
+    <string name="excluir">Excluir</string>
+    <string name="copiar_url">Copiar URL</string>
+    <string name="baixar_novamente">Baixar Novamente</string>
+    <string name="download_concluido">Download Concluido!</string>
+    <string name="nao_foi_possivel_download">Não foi possível realizar o download. Tente Novamente</string>
+    <string name="arquivo_removido_dispositivo">Este arquivo foi removido do seu dispositivo.</string>
+    <string name="aguarde">Aguarde…</string>
+    <string name="excluido_com_sucesso">Excluido com sucesso!</string>
+    <string name="link_copiado">Link Copiado</string>
+    <string name="habilitar_permissao_para_continuar">É preciso habilitar a permissão para continuar</string>
+    <string name="erro_ao_comprar">Ocorreu um erro ao executar a compra. Tente Novamente.</string>
+    <string name="verificar_internet">Verifique sua conexão com a internet</string>
+    <string name="item_ja_baixado">Esse item já foi baixado.</string>
+    <string name="digite_url_valida">Digite uma Url válida</string>
+
+    <string name="info_1">1° Opção - Compartilhar direto do Instagram</string>
+    <string name="tx_1">1</string>
+    <string name="abrir_instagram">Abrir Instagram</string>
+    <string name="tx_2">2</string>
+    <string name="compartilhar_com_o_instadownloader">Compartilhar com o InstaDownloader</string>
+    <string name="info_2">2° opção - Copiar Link para baixar</string>
+    <string name="abrir_instadownloader">Abrir InstaDownloader</string>
+    <string name="ja_sou_premium">Já Sou Premium</string>
+    <string name="conta_reativada_com_sucesso">Conta premium reativada com sucesso!</string>
+    <string name="compra_nao_encontrada">Não foi encontrada nenhuma compra associada a conta atual.</string>
+    <string name="habilitar_permissao">Habilitar Permissão</string>
+    <string name="close">Fechar</string>
+    <string name="stories_privados">Os Stories são privados. Não é possível baixar.</string>
+    <string name="anuncio_sera_exibido">Um Anúncio será exibido em</string>
+    <string name="sticker_maker">Criador de Stickers para WhatsApp</string>
+    <string name="erro_compartilhar">Um erro ocorreu. Não foi possível compartilhar</string>
+    <string name="app_open">ca-app-pub-8746749426672361/4207247551</string>
+    <string name="bem_vindo">Bem Vindo</string>
+    <string name="politica_anuncios">Politica de Anúncios</string>
+    <string name="politica_anuncios_descricao">Caro usuário, sabemos que os anúncios podem incomodar e atrapalhar a experiência com o applicativo, mas esta é a forma de mantê-lo gratuito, você pode adquirir o premium e removê-los a qualquer momento. </string>
+    <string name="armazenamento_interno">Acesso ao armazenamento interno</string>
+    <string name="armazenamento_interno_descricao">Vamos solicitar a você permissão para o armazenamento interno do dispositivo apenas para salvar os vídeos e posts baixados na sua galeria.</string>
+    <string name="problema_conexao">Houve algum problema na conexão. Tente novamente</string>
+
+</resources>

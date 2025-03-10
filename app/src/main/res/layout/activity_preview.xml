@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="#000"
+    android:orientation="vertical"
+    tools:context=".Activity.PreviewActivity">
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/container_ads"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#111"
+        >
+        <!--include layout="@layout/custom_native_ads"/-->
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/container_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            />
+        <com.tmall.ultraviewpager.UltraViewPager
+            android:id="@+id/ultra_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <VideoView
+            android:id="@+id/video_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="top|start"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@drawable/circle_pink"
+            android:padding="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:tint="#FFF" />
+
+        <ImageView
+            android:id="@+id/opcoes"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="top|end"
+            android:src="@drawable/ic_more"
+            android:padding="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:tint="#FFF" />
+    </FrameLayout>
+
+</LinearLayout>

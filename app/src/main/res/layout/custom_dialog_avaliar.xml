@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/pink"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/avalie_nosso_aplicativo"
+            android:padding="10dp"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:textColor="#fff"/>
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        app:lottie_fileName="rating.json"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false"
+        android:visibility="visible"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/btn_nunca"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:background="@drawable/borda_big_slim1"
+            android:text="@string/nunca"
+            android:textColor="@color/pink"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/btn_agoranao"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:background="@drawable/borda_big_slim1"
+            android:text="@string/depois"
+            android:textColor="@color/pink"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/btn_avaliar"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/borda_big_1"
+            android:text="@string/avaliar"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+    </LinearLayout>

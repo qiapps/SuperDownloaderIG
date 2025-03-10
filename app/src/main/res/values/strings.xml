@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">InstaDownloader</string>
+
+    <string name="my_ca_app_pub">ca-app-pub-8746749426672361~5740870708</string>
+    <string name="intersticial_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="native_ads_test">/6499/example/native</string>
+
+    <string name="interstitial_download_video">ca-app-pub-8746749426672361/3931296710</string>
+
+    <string name="nativo_inicio">ca-app-pub-8746749426672361/5209585339</string>
+    <string name="nativo_download">ca-app-pub-8746749426672361/1884552026</string>
+    <string name="nativo_saida">ca-app-pub-8746749426672361/3068838855</string>
+
+    <string name="app_open_instadownloader">ca-app-pub-8746749426672361/3098427316</string>
+
+    <string name="placeholder_text">Paste the video link here</string>
+    <string name="como_usar">How to Use</string>
+    <string name="colar">PASTE</string>
+    <string name="download">DOWNLOAD</string>
+    <string name="compartilhar">Share</string>
+    <string name="premium">Remove ADS</string>
+    <string name="mais_apps">More Apps</string>
+    <string name="email_ao_desenvolvedor">Email to Developer</string>
+
+    <string name="nunca">Never</string>
+    <string name="depois">After</string>
+    <string name="avaliar">Evaluate</string>
+    <string name="avalie_nosso_aplicativo">Rate our App!!</string>
+    <string name="entendi">OK</string>
+    <string name="stories_text">Dear user,\n\nDue to instagram policies, it is not possible to download content from stories and videos unless you are logged into your account. Login is done on the official instagram page and we do not capture any of the information entered. \n\nNote: If you decide not to login, this application will not be able to download videos</string>
+    <string name="salvar_status_do_whatsapp">Status Saver for WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="historico">History</string>
+    <string name="opcoes">Options</string>
+    <string name="nao_ha_itens">No items here</string>
+    <string name="toque_para_sair">Tap to Exit</string>
+    <string name="ver_no_instagram">See on Instagram</string>
+    <string name="repostar">Repost</string>
+    <string name="excluir">Delete</string>
+    <string name="copiar_url">Copy URL</string>
+    <string name="baixar_novamente">Download Again</string>
+    <string name="download_concluido">Download Completed!</string>
+    <string name="nao_foi_possivel_download">Couldn\'t download. Try Again</string>
+    <string name="arquivo_removido_dispositivo">This file has been removed from your device.</string>
+    <string name="aguarde">Please Wait...</string>
+    <string name="excluido_com_sucesso">Successfully deleted!</string>
+    <string name="link_copiado">Link Copied</string>
+    <string name="habilitar_permissao_para_continuar">You need to enable permission to continue</string>
+    <string name="erro_ao_comprar">An error occurred while executing the purchase. Try again.</string>
+    <string name="verificar_internet">Check your internet connection</string>
+    <string name="item_ja_baixado">This item has already been downloaded.</string>
+    <string name="digite_url_valida">Enter a valid Url</string>
+    <string name="info_1">1° Option - Share directly from instagram</string>
+    <string name="tx_1">1</string>
+    <string name="abrir_instagram">Open Instagram</string>
+    <string name="tx_2">2</string>
+    <string name="compartilhar_com_o_instadownloader">Share with InstaDownloader</string>
+    <string name="info_2">2° Option - Copy Link to download</string>
+    <string name="abrir_instadownloader">Open InstaDownloader</string>
+    <string name="ja_sou_premium">Already got Premium</string>
+    <string name="conta_reativada_com_sucesso">Premium account reactivated successfully!</string>
+    <string name="compra_nao_encontrada">No purchase was found associated with the current account.</string>
+    <string name="habilitar_permissao">Enable Pemission</string>
+    <string name="close">Close</string>
+    <string name="stories_privados">Stories are private. Unable to download.</string>
+    <string name="anuncio_sera_exibido">An ad will appear in</string>
+    <string name="sticker_maker">Sticker Maker for WhatsApp</string>
+    <string name="erro_compartilhar">An error has occurred. Couldn\'t share</string>
+    <string name="app_open">ca-app-pub-8746749426672361/4207247551</string>
+    <string name="bem_vindo">Welcome</string>
+    <string name="politica_anuncios">Ad policy</string>
+    <string name="politica_anuncios_descricao">Dear user, we know that ads can bother and disrupt the experience with the app, but this is the way to keep it free, you can purchase the premium and remove them at any time. If you are a user from California (USA), we are not using your personal information to serve ads in accordance with the CCPA.</string>
+    <string name="armazenamento_interno">Access to internal storage</string>
+    <string name="armazenamento_interno_descricao">We will ask you for permission to the device\'s internal storage just to save downloaded videos and posts to your gallery.</string>
+    <string name="problema_conexao">There was a problem with the connection. Try again</string>
+</resources>

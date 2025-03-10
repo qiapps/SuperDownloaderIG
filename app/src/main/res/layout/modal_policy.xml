@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bem_vindo"
+        android:padding="8dp"
+        android:textSize="16sp"
+        fontPath="Montserrat-Bold.ttf"
+        tools:ignore="MissingPrefix"
+        android:textColor="@color/pink"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/politica_anuncios"
+            android:padding="8dp"
+            android:textSize="14sp"
+            fontPath="Montserrat-Bold.ttf"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/pink"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:text="@string/politica_anuncios_descricao"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/armazenamento_interno"
+            android:padding="8dp"
+            android:textSize="14sp"
+            fontPath="Montserrat-Bold.ttf"
+            tools:ignore="MissingPrefix"
+            android:textColor="@color/pink"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:text="@string/armazenamento_interno_descricao"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_entendi"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/borda_redonda_pink"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/entendi"
+        android:textColor="#FFF"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>

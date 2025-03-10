@@ -1,0 +1,4 @@
+<paths>
+    <external-files-path name="shared_media" path="Download/SharedMedia/" />
+    <external-cache-path name="cache_media" path="." />
+</paths>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="right|center"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="InstaDownloader"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        android:layout_marginStart="8dp"
+        fontPath="Montserrat-Bold.ttf"
+        tools:ignore="MissingPrefix"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:id="@+id/btn_premium_toolbar"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_stars"
+        android:tint="@color/black"
+        android:visibility="gone"
+        android:padding="6dp"/>
+    <ImageView
+        android:id="@+id/btn_instagram"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:tint="@color/black"
+        android:src="@drawable/instagram"
+        android:padding="8dp"/>
+
+</LinearLayout>

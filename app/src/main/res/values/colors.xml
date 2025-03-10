@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f2f2f2</color>
+    <color name="colorPrimaryDark">#f2f2f2</color>
+    <color name="colorAccent">#ff4181</color>
+    <color name="cinza_claro">#f2f2f2</color>
+    <color name="cinza">#e6e6e6</color>
+    <color name="cinza_escuro">#adadad</color>
+    <color name="pink">#ff4181</color>
+    <color name="pink2">#70ff4181</color>
+    <color name="black">#333</color>
+    <color name="black2">#444</color>
+    <color name="white">#FFF</color>
+</resources>
