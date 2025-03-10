@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import com.qiapps.superdownloaderig.Activity.MainActivity;
+import com.qiapps.superdownloaderig.Helper.UserPreferences;
 import com.qiapps.superdownloaderig.R;
 
 /**
@@ -27,7 +28,6 @@ public class SettingsFragment extends Fragment {
     private View view;
     private MainActivity activity;
     private FirebaseAnalytics analytics;
-    private TextView price;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -47,7 +47,6 @@ public class SettingsFragment extends Fragment {
         feedback = view.findViewById(R.id.vg_feedback);
         mais_apps = view.findViewById(R.id.vg_mais_apps);
         premium = view.findViewById(R.id.vg_premium);
-        price = view.findViewById(R.id.price);
         reativar = view.findViewById(R.id.vg_reativar);
 
         activity = (MainActivity)getActivity();
@@ -142,8 +141,14 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //activity.purchaseItem();
+                activity.startPurchase();
             }
         });
+
+        if(UserPreferences.isUserPremium(activity)){
+            premium.setVisibility(View.GONE);
+            reativar.setVisibility(View.GONE);
+        }
 
         reativar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +158,7 @@ public class SettingsFragment extends Fragment {
 //                }else{
 //                    Toast.makeText(activity, R.string.compra_nao_encontrada, Toast.LENGTH_SHORT).show();
 //                }
+                activity.verifyPurchase();
             }
         });
 

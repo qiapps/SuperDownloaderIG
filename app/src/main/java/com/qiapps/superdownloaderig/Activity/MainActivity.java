@@ -6,6 +6,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -14,6 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.Purchase;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.ads.MobileAds;
@@ -71,6 +74,7 @@ import com.qiapps.superdownloaderig.Helper.MyDownloadManager;
 import com.qiapps.superdownloaderig.Helper.SoundHelper;
 import com.qiapps.superdownloaderig.Helper.UserPreferences;
 import com.qiapps.superdownloaderig.Model.InstagramResource;
+import com.qiapps.superdownloaderig.Purchase.BillingManager;
 import com.qiapps.superdownloaderig.R;
 import com.qiapps.superdownloaderig.ViewPager.MyPagerAdapter;
 
@@ -78,7 +82,7 @@ import org.w3c.dom.Text;
 
 import io.github.inflationx.viewpump.ViewPumpContextWrapper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BillingManager.BillingListener{
 
     private static final int REQUEST_CODE = 134;
     private ViewPager2 pager;
@@ -96,35 +100,22 @@ public class MainActivity extends AppCompatActivity {
     private boolean menuOpcaoOpen = false;
     private boolean videoContainerOpen = false;
     private boolean jaMostrouAvaliacao = false;
-    private WebView webView;
-    private boolean webUrlload = false;
     private boolean webviewVisible = false;
-    private boolean preloadWebview = false;
-    private boolean initLogin = false;
-    private boolean loginInstagramWebview = false;
     private boolean isShowModalLogin = false;
     private ViewGroup container_ads_download;
     private ViewGroup container;
     private QIBottomDrawerAds qiBottomDrawerAds;
     private QINativeAds qiNativeAds;
-    //private QIStartNaviteAd qiStartNaviteAd;
 
     private Handler handler;
-    private String sku = "premium";
-    //BillingClient billingClient;
-    //SkuDetails skuDetails;
-    private static final int REQUEST_CODE_BILLING = 1100;
+    private String PRODUCT_ID = "premium";
     private FirebaseAnalytics analytics;
     private String price = "";
-    private FirebaseRemoteConfig mFirebaseRemoteConfig;
-    private long timeMillis = 1500;
-    private long timeMillisStories = 1500;
+    private BillingManager billingManager;
 
     public CustomApplication customApplication;
     private ViewGroup vg_loading_ads;
     private int countLoadingAds = 3;
-    private Timer timer;
-    private boolean enableGetResource = false;
 
 
     @Override
@@ -285,39 +276,25 @@ public class MainActivity extends AppCompatActivity {
 
             customApplication.buildEntradaInterstitial(MainActivity.this);
         }
-
-        //premium
-        //configPremium();
-        findViewById(R.id.btn_premium_toolbar).setOnClickListener(new View.OnClickListener() {
+        TextView btn_anuncio = findViewById(R.id.btn_premium_toolbar);
+        btn_anuncio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //purchaseItem();
+                startPurchase();
             }
         });
 
+        if(UserPreferences.isUserPremium(this)){
+            //btn_anuncio.setVisibility(View.GONE);
+            btn_anuncio.setText(R.string.acesso_vitalicio);
+            Drawable d = ContextCompat.getDrawable(MainActivity.this,R.drawable.borda_big_1);
+            btn_anuncio.setBackground(d);
+            btn_anuncio.setTextColor(Color.WHITE);
+        }
 
-        //configuração remota
-//        mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-//        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-//                //.setMinimumFetchIntervalInSeconds(0)
-//                .build();
-//        mFirebaseRemoteConfig.setDefaultsAsync(R.xml.remote_config);
-//        mFirebaseRemoteConfig.setConfigSettingsAsync(configSettings);
-//
-//        mFirebaseRemoteConfig.fetchAndActivate()
-//                .addOnCompleteListener(this, new OnCompleteListener<Boolean>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Boolean> task) {
-//                        if (task.isSuccessful()) {
-//                            int countVideoDownload = Integer.parseInt(mFirebaseRemoteConfig.getString("count_video_download_ads"));
-//                            int countEntradaAds = Integer.parseInt(mFirebaseRemoteConfig.getString("count_entrada_ads"));
-//
-//                            UserPreferences.changeCountEntradaAds(MainActivity.this,countEntradaAds);
-//                            UserPreferences.changeCountVideoDownloadAds(MainActivity.this,countVideoDownload);
-//                        } else {
-//                        }
-//                    }
-//                });
+        // Inicializa o gerenciador de compras
+        billingManager = new BillingManager(this, this);
+
 
     }
 
@@ -737,7 +714,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if(webviewVisible){
-            webView.setVisibility(View.INVISIBLE);
+            //webView.setVisibility(View.INVISIBLE);
             hideVideoContainer();
         }else {
             if (menuOpcaoOpen) {
@@ -747,6 +724,9 @@ public class MainActivity extends AppCompatActivity {
             }
         else if (qiBottomDrawerAds != null) {
                 qiBottomDrawerAds.show();
+            }
+        else{
+            super.onBackPressed();
             }
         }
     }
@@ -825,6 +805,53 @@ public class MainActivity extends AppCompatActivity {
         if(qiBottomDrawerAds!=null) {
             qiBottomDrawerAds.destroy();
         }
+        billingManager.endConnection();
         super.onDestroy();
     }
+
+    public void startPurchase(){
+        billingManager.launchPurchaseFlow(this, PRODUCT_ID, BillingClient.SkuType.INAPP);
+    }
+
+    public void verifyPurchase(){
+        Log.d("Purchase","verifyPurchase");
+        billingManager.queryPurchases();
+    }
+
+    @Override
+    public void onPurchaseCompleted(Purchase purchase) {
+        Log.d("Purchase","onPurchaseCompleted");
+        UserPreferences.initUserPremium(this);
+        Toast.makeText(customApplication, getString(R.string.compra_realizada), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onPurchaseError(String error) {
+        Log.d("Purchase","onPurchaseError");
+    }
+
+    @Override
+    public void onPurchaseRestored(List<Purchase> purchases) {
+        Log.d("Purchase", "onPurchaseRestored");
+        boolean hasPurchase = false;
+
+        if (!UserPreferences.isUserPremium(this)) {
+            if (purchases != null) {
+                for (Purchase purchase : purchases) {
+                    if (purchase.getProducts().contains(PRODUCT_ID)) { // ✅ Atualizado para API 7.0.0
+                        hasPurchase = true;
+                        UserPreferences.initUserPremium(this);
+                        runOnUiThread(() -> Toast.makeText(customApplication, getString(R.string.conta_reativada_com_sucesso), Toast.LENGTH_LONG).show());
+                    }
+                }
+            }
+        }
+
+        Log.d("Purchase", "hasPurchase: " + hasPurchase);
+        if (!hasPurchase) {
+            Log.d("Purchase", "sendToast");
+            runOnUiThread(() -> Toast.makeText(customApplication, getString(R.string.compra_nao_encontrada), Toast.LENGTH_LONG).show());
+        }
+    }
+
 }

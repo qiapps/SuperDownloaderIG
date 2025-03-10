@@ -20,7 +20,7 @@
     <string name="colar">COLAR</string>
     <string name="download">DOWNLOAD</string>
     <string name="compartilhar">Compartilhar</string>
-    <string name="premium">Remover Propagandas</string>
+    <string name="premium">REMOVER ANÚNCIOS</string>
     <string name="mais_apps">Mais Apps</string>
     <string name="email_ao_desenvolvedor">Email ao Desenvolvedor</string>
 
@@ -60,8 +60,9 @@
     <string name="compartilhar_com_o_instadownloader">Compartilhar com o InstaDownloader</string>
     <string name="info_2">2° opção - Copiar Link para baixar</string>
     <string name="abrir_instadownloader">Abrir InstaDownloader</string>
-    <string name="ja_sou_premium">Já Sou Premium</string>
+    <string name="ja_sou_premium">Reativar Compra</string>
     <string name="conta_reativada_com_sucesso">Conta premium reativada com sucesso!</string>
+    <string name="compra_realizada">Compra realizada com sucesso! Feche o app para remover os anúncios!</string>
     <string name="compra_nao_encontrada">Não foi encontrada nenhuma compra associada a conta atual.</string>
     <string name="habilitar_permissao">Habilitar Permissão</string>
     <string name="close">Fechar</string>
@@ -76,5 +77,7 @@
     <string name="armazenamento_interno">Acesso ao armazenamento interno</string>
     <string name="armazenamento_interno_descricao">Vamos solicitar a você permissão para o armazenamento interno do dispositivo apenas para salvar os vídeos e posts baixados na sua galeria.</string>
     <string name="problema_conexao">Houve algum problema na conexão. Tente novamente</string>
+    <string name="tirar_anuncios">REMOVER ANÚNCIOS</string>
+    <string name="acesso_vitalicio">ACESSO VITALÍCIO</string>
 
 </resources>

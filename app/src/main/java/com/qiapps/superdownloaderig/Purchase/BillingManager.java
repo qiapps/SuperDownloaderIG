@@ -5,15 +5,17 @@ import android.content.Context;
 import android.util.Log;
 import com.android.billingclient.api.*;
 import java.util.List;
+import java.util.Arrays;
 
 public class BillingManager {
     private static final String TAG = "BillingManager";
-    private BillingClient billingClient;
+    private final BillingClient billingClient;
     private BillingListener listener;
 
     public interface BillingListener {
         void onPurchaseCompleted(Purchase purchase);
         void onPurchaseError(String error);
+        void onPurchaseRestored(List<Purchase> purchases);
     }
 
     public BillingManager(Context context, BillingListener listener) {
@@ -27,6 +29,7 @@ public class BillingManager {
             public void onBillingSetupFinished(BillingResult billingResult) {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     Log.d(TAG, "Billing service connected.");
+                    //queryPurchases(); // Verifica compras existentes ao iniciar
                 }
             }
             @Override
@@ -46,25 +49,45 @@ public class BillingManager {
         }
     };
 
-    public void querySkuDetails(List<String> skuList, String skuType, SkuDetailsResponseListener callback) {
-        SkuDetailsParams params = SkuDetailsParams.newBuilder()
-                .setSkusList(skuList)
-                .setType(skuType)
+    // Inicia fluxo de compra do produto
+    public void launchPurchaseFlow(Activity activity, String productId, String skuType) {
+        QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
+                .setProductList(Arrays.asList(QueryProductDetailsParams.Product.newBuilder()
+                        .setProductId(productId)
+                        .setProductType(skuType)
+                        .build()))
                 .build();
-        billingClient.querySkuDetailsAsync(params, (billingResult, skuDetailsList) -> {
-            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && skuDetailsList != null) {
-                callback.onSkuDetailsResponse(billingResult, skuDetailsList);
+
+        billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && productDetailsList != null && !productDetailsList.isEmpty()) {
+                ProductDetails productDetails = productDetailsList.get(0);
+                BillingFlowParams purchaseParams = BillingFlowParams.newBuilder()
+                        .setProductDetailsParamsList(Arrays.asList(BillingFlowParams.ProductDetailsParams.newBuilder()
+                                .setProductDetails(productDetails)
+                                .build()))
+                        .build();
+                billingClient.launchBillingFlow(activity, purchaseParams);
             } else {
-                Log.e(TAG, "Erro ao buscar SKUs: " + billingResult.getDebugMessage());
+                listener.onPurchaseError("Erro ao buscar o produto: " + billingResult.getDebugMessage());
             }
         });
     }
 
-    public void launchPurchaseFlow(Activity activity, SkuDetails skuDetails) {
-        BillingFlowParams purchaseParams = BillingFlowParams.newBuilder()
-                .setSkuDetails(skuDetails)
-                .build();
-        billingClient.launchBillingFlow(activity, purchaseParams);
+    public void queryPurchases() { // Verifica se o usuário já comprou
+        billingClient.queryPurchasesAsync(QueryPurchasesParams.newBuilder()
+                .setProductType(BillingClient.ProductType.INAPP)
+                .build(), (billingResult, purchases) -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                if (purchases != null && !purchases.isEmpty()) {
+                    listener.onPurchaseRestored(purchases);
+                } else {
+                    listener.onPurchaseRestored(null);
+                }
+            } else {
+                listener.onPurchaseRestored(null);
+                Log.e(TAG, "Erro ao recuperar compras: " + billingResult.getDebugMessage());
+            }
+        });
     }
 
     private void handlePurchase(Purchase purchase) {
@@ -77,4 +100,5 @@ public class BillingManager {
         billingClient.endConnection();
     }
 }
+
 

@@ -131,7 +131,7 @@ public class SplashActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(customApplication.qiAppOpenSplash!=null){
+                if(customApplication.qiAppOpenSplash!=null && !UserPreferences.isUserPremium(customApplication)){
                     customApplication.qiAppOpenSplash.setEventUtils(new QIAppOpenSplash.Utils() {
                         @Override
                         public void event(String event) {

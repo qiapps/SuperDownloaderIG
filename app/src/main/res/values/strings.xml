@@ -18,7 +18,7 @@
     <string name="colar">PASTE</string>
     <string name="download">DOWNLOAD</string>
     <string name="compartilhar">Share</string>
-    <string name="premium">Remove ADS</string>
+    <string name="premium">REMOVE ADS</string>
     <string name="mais_apps">More Apps</string>
     <string name="email_ao_desenvolvedor">Email to Developer</string>
 
@@ -43,6 +43,7 @@
     <string name="nao_foi_possivel_download">Couldn\'t download. Try Again</string>
     <string name="arquivo_removido_dispositivo">This file has been removed from your device.</string>
     <string name="aguarde">Please Wait...</string>
+    <string name="compra_realizada">Purchase successful! Close the app to remove ads!</string>
     <string name="excluido_com_sucesso">Successfully deleted!</string>
     <string name="link_copiado">Link Copied</string>
     <string name="habilitar_permissao_para_continuar">You need to enable permission to continue</string>
@@ -57,7 +58,7 @@
     <string name="compartilhar_com_o_instadownloader">Share with InstaDownloader</string>
     <string name="info_2">2° Option - Copy Link to download</string>
     <string name="abrir_instadownloader">Open InstaDownloader</string>
-    <string name="ja_sou_premium">Already got Premium</string>
+    <string name="ja_sou_premium">Reactivate purchase</string>
     <string name="conta_reativada_com_sucesso">Premium account reactivated successfully!</string>
     <string name="compra_nao_encontrada">No purchase was found associated with the current account.</string>
     <string name="habilitar_permissao">Enable Pemission</string>
@@ -73,4 +74,6 @@
     <string name="armazenamento_interno">Access to internal storage</string>
     <string name="armazenamento_interno_descricao">We will ask you for permission to the device\'s internal storage just to save downloaded videos and posts to your gallery.</string>
     <string name="problema_conexao">There was a problem with the connection. Try again</string>
+    <string name="tirar_anuncios">REMOVE ADS</string>
+    <string name="acesso_vitalicio">PREMIUM ACTIVE</string>
 </resources>
