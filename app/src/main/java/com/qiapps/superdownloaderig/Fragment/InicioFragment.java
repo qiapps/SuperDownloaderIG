@@ -176,6 +176,7 @@ public class InicioFragment extends Fragment {
                                         public void run() {
 
                                             activity.hideDownloadContainer();
+                                            activity.hideVideoContainer();
                                             Toast.makeText(activity, R.string.nao_foi_possivel_download, Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -193,6 +194,7 @@ public class InicioFragment extends Fragment {
                                         @Override
                                         public void run() {
                                             activity.hideDownloadContainer();
+                                            activity.hideVideoContainer();
                                             Toast.makeText(activity, R.string.nao_foi_possivel_download, Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -205,6 +207,7 @@ public class InicioFragment extends Fragment {
                                         @Override
                                         public void run() {
                                             activity.hideDownloadContainer();
+                                            activity.hideVideoContainer();
                                             Toast.makeText(activity, R.string.nao_foi_possivel_download, Toast.LENGTH_SHORT).show();
                                         }
                                     });

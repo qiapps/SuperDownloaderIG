@@ -116,12 +116,14 @@ public class DownloadFileFromInstagramResource extends AsyncTask<Void, String, S
                             parentDir.mkdirs();
                         }
                         output = new FileOutputStream(file);
-                        if(i==0){
-                            //adiciona nome e descrição
-                            String mime = FileManager.isUrlVideo(u) ? "video/mp4" : "image/jpeg";
-                            instagramResource.setUsername(file.getName());
-                            instagramResource.setTitle(mime);
-                        }
+
+                    }
+
+                    if(i==0 && MyDownloadManager.isStories(instagramResource.getInstagramPath())){
+                        //adiciona nome e descrição
+                        String mime = FileManager.isUrlVideo(u) ? "video/mp4" : "image/jpeg";
+                        instagramResource.setUsername("Stories");
+                        instagramResource.setTitle(mime);
                     }
 
                     if (output == null) {

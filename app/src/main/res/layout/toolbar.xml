@@ -41,6 +41,7 @@
     <ImageView
         android:id="@+id/btn_instagram"
         android:layout_width="36dp"
+        android:visibility="gone"
         android:layout_height="36dp"
         android:tint="@color/black"
         android:src="@drawable/instagram"

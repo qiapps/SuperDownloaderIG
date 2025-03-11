@@ -356,7 +356,7 @@ public class FileManager {
         if(u.length > 1) return false;
         if(url.equals("")){
             return false;
-        }else if(url.contains("instagram.com")){
+        }else if(url.contains("http")){
             return true;
         }else{
             return false;
@@ -364,7 +364,7 @@ public class FileManager {
     }
 
     public static boolean isUrlVideo(String url){
-        return !url.equals("") && url.contains(".mp4");
+        return !url.equals("") && (url.contains(".mp4") || url.contains("/video"));
     }
 
     public static boolean isFileExists(Context context, String filePath) {

@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements BillingManager.Bi
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position){
                     case 0:
-                        tab.setText(R.string.instagram);
+                        tab.setText("DOWNLOAD");
                         break;
                     case 1:
                         tab.setText(R.string.historico);

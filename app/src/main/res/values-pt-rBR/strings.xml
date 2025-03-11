@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">InstaDownloader</string>
+    <string name="app_name">Baixar Videos</string>
 
     <string name="my_ca_app_pub">ca-app-pub-8746749426672361~5740870708</string>
     <string name="intersticial_test">ca-app-pub-3940256099942544/1033173712</string>

@@ -32,8 +32,10 @@ import java.util.TimerTask;
 
 import com.qiapps.superdownloaderig.Model.InstagramResource;
 
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MyDownloadManager {
@@ -62,7 +64,12 @@ public class MyDownloadManager {
         @Override
         protected InstagramResource doInBackground(Void... voids) {
             //String s = convertStringUrlInstagran(link);
-            return getInstagramResource(link);
+            if(isStories(link)){
+                return getInstagramResource(link);
+            }else{
+                return getResourceByAutoDownloadAllinOneAPI(link);
+            }
+
         }
 
         @Override
@@ -93,8 +100,9 @@ public class MyDownloadManager {
 
     public InstagramResource getInstagramResource(String postUrl){
 
-
         InstagramResource instagramResource = new InstagramResource();
+        try {
+
         Log.d("InstagramApiTask", "posturl: " + postUrl);
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -104,7 +112,7 @@ public class MyDownloadManager {
                 .addHeader("x-rapidapi-host", "instagram-downloader-scraper-reels-igtv-posts-stories.p.rapidapi.com")
                 .build();
 
-        try {
+
             Response response = client.newCall(request).execute();
             if (!response.isSuccessful()) return null;
 
@@ -191,6 +199,94 @@ public class MyDownloadManager {
         return instagramResource;
 
     }
+
+    public InstagramResource getResourceByAutoDownloadAllinOneAPI(String postUrl) {
+        InstagramResource instagramResource = null;
+        Log.d("getResourceByAutoDownloadAllinOneAPI", "posturl: " + postUrl);
+
+        try {
+        OkHttpClient client = new OkHttpClient();
+
+        // 🔹 Criar o JSON para o corpo da requisição
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\"url\":\"" + postUrl + "\"}");
+
+        // 🔹 Criar a requisição HTTP
+        Request request = new Request.Builder()
+                .url("https://auto-download-all-in-one.p.rapidapi.com/v1/social/autolink")
+                .post(body)
+                .addHeader("x-rapidapi-key", RAPIDAPI_KEY)
+                .addHeader("x-rapidapi-host", "auto-download-all-in-one.p.rapidapi.com")
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+
+            Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) return null;
+            String responseBody = response.body().string();
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            instagramResource = new InstagramResource();
+            // 🔹 Preencher os dados básicos
+            instagramResource.setTitle(jsonResponse.optString("title", ""));
+            instagramResource.setUsername(jsonResponse.optString("author", ""));
+            int duration = (int) jsonResponse.optDouble("duration", 0);
+            instagramResource.setDuration(duration);
+            instagramResource.setInstagramPath(postUrl);
+            instagramResource.setUrl(jsonResponse.optString("thumbnail", ""));
+
+            // 🔹 Processar os "medias"
+            JSONArray mediasArray = jsonResponse.optJSONArray("medias");
+            String source = jsonResponse.optString("source");
+            Log.d("getResourceByAutoDownloadAllinOneAPI", "source: " + source);
+            if (mediasArray != null) {
+                if (mediasArray.length() == 1 || source.equals("tiktok") || source.equals("facebook")) {//se tiver apenas uma midia ou se for do tiktok
+                    // 🔹 Post único (imagem ou vídeo)
+                    Log.d("getResourceByAutoDownloadAllinOneAPI", "imagem ou video unico");
+                    JSONObject mediaObject = mediasArray.getJSONObject(0);
+                    String downloadUrl = mediaObject.optString("url");
+                    String type = mediaObject.optString("type");
+                    boolean isVideo = type.equalsIgnoreCase("video");
+
+                    instagramResource.setVideo_url(downloadUrl);
+                    instagramResource.setIsVideo(isVideo ? 1 : 0);
+
+                    String filePath = isVideo ? FileManager.getVideoPath(context) : FileManager.getImagePath(context);
+                    instagramResource.setFilepath(filePath);
+
+                } else {
+                    // 🔹 Carrossel ou conjunto de stories
+                    instagramResource.setIsVideo(0); // Não é um único vídeo
+                    StringBuilder filePaths = new StringBuilder();
+                    StringBuilder downloadUrls = new StringBuilder();
+
+                    for (int i = 0; i < mediasArray.length(); i++) {
+                        JSONObject mediaObject = mediasArray.getJSONObject(i);
+                        String downloadUrl = mediaObject.optString("url");
+                        String type = mediaObject.optString("type");
+                        boolean isVideo = type.equalsIgnoreCase("video");
+
+                        downloadUrls.append(downloadUrl).append(";");
+
+                        String filePath = isVideo ? FileManager.getVideoPath(context) : FileManager.getImagePath(context);
+                        filePaths.append(filePath).append(";");
+                    }
+
+                    instagramResource.setVideo_url(downloadUrls.toString());
+                    instagramResource.setFilepath(filePaths.toString());
+                }
+            }
+
+        } catch (IOException e) {
+            Log.e("getResourceByAutoDownloadAllinOneAPI", "Erro ao obter URL da mídia: " + e.getMessage());
+            return null;
+        } catch (JSONException e) {
+            Log.e("getResourceByAutoDownloadAllinOneAPI", "Erro ao processar JSON: " + e.getMessage());
+            return null;
+        }
+
+        return instagramResource;
+    }
+
 
 
 
